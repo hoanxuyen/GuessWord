@@ -1,3 +1,5 @@
+import GuessGrid from "./components/GuessGrid";
+
 export default function App() {
-  return <div className="text-2xl">Hello</div>;
+  return <GuessGrid numberOfRows={4} numberOfWords={5} />;
 }

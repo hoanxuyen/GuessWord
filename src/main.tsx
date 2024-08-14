@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import "./index.css";
 import { Provider } from "react-redux";
 import { store } from "./store/store.ts";
-import "unocss";
+import "virtual:uno.css";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <Provider store={store}>
