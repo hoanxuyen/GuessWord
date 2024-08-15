@@ -1,6 +1,6 @@
 export const ElementTestIds = {
-  tile: "GuessTileTestID",
-  row: "GuessRowTestID",
-  grid: "GuessGridTestID",
-  keyboard: "GuessKeyboardTestID",
+  tile: "GuessTile",
+  row: "GuessRow",
+  grid: "GuessGrid",
+  keyboard: "GuessKeyboard",
 };

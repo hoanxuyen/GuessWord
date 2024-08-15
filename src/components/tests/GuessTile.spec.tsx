@@ -6,7 +6,6 @@ import { ElementTestIds } from "../../GuessUtil";
 describe("test component", () => {
   it("Should render correctly", () => {
     render(<GuessTile />);
-    screen.debug();
     expect(screen.getByTestId(ElementTestIds.tile)).toBeInTheDocument();
   });
 });
