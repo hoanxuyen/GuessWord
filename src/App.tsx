@@ -1,3 +1,5 @@
+import GuessMainMenu from "./components/GuessMainMenu";
+
 export default function App() {
-  return <div className="text-2xl">Hello</div>;
+  return <GuessMainMenu />;
 }
