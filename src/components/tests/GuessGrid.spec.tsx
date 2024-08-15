@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
-import GuessGrid from "../GuessGrid";
+import GuessGrid from "../grid/GuessGrid";
 import { ElementTestIds } from "../../GuessUtil";
 
 describe("GuessGrid component", () => {

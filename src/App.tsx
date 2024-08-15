@@ -1,5 +1,5 @@
-import GuessGrid from "./components/GuessGrid";
+import GuessMainMenu from "./components/GuessMainMenu";
 
 export default function App() {
-  return <GuessGrid numberOfRows={4} numberOfWords={5} />;
+  return <GuessMainMenu />;
 }

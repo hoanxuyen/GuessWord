@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { useState } from "react";
-import { ElementTestIds } from "../GuessUtil";
+import { ElementTestIds } from "../../GuessUtil";
 
 export default function GuessTile() {
   const [letter, setLetter] = useState("");

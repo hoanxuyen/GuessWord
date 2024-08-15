@@ -1,4 +1,4 @@
-import { ElementTestIds } from "../GuessUtil";
+import { ElementTestIds } from "../../GuessUtil";
 import GuessTile from "./GuessTile";
 
 type GuessRowProps = {
@@ -11,7 +11,6 @@ export default function GuessRow({ numberOfWords }: GuessRowProps) {
     for (let i = 0; i < numberOfWords; i++) {
       tiles.push(<GuessTile key={i} />);
     }
-    console.log(tiles);
     return tiles;
   };
 

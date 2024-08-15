@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import GuessRow from "../GuessRow";
+import GuessRow from "../grid/GuessRow";
 import { render, screen } from "@testing-library/react";
 import { ElementTestIds } from "../../GuessUtil";
 

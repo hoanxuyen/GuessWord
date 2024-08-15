@@ -1,4 +1,4 @@
-import { ElementTestIds } from "../GuessUtil";
+import { ElementTestIds } from "../../GuessUtil";
 import GuessRow from "./GuessRow";
 
 type GuessGridProps = {

@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import GuessTile from "../components/GuessTile";
+import GuessTile from "../components/grid/GuessTile";
 
 const meta: Meta = {
   title: "Grid/Tile",

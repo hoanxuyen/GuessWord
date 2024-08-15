@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import GuessRow from "../components/GuessRow";
+import GuessRow from "../components/grid/GuessRow";
 
 const meta: Meta = {
   title: "Grid/Row",
