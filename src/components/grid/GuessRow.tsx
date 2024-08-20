@@ -15,7 +15,6 @@ export default function GuessRow({ rowid }: { rowid: number }) {
     }
     return tiles;
   };
-console.log("render row")
   return (
     <div className="flex gap-2" data-testid={ElementTestIds.row}>
       {generateRow(numberOfWords)}

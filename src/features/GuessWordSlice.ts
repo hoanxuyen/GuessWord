@@ -33,10 +33,12 @@ const guessWordSlice = createSlice({
         return; // Stop if reached word's length
       if (!state.guessedWord[state.currentRow]) {
         state.guessedWord[state.currentRow] = "";
+      } // If undefined , current guessedWord at current row will be empty string
+      if (action.payload !== "DELETE") {
+        state.guessedWord[state.currentRow] = state.guessedWord[
+          state.currentRow
+        ].concat(action.payload);
       }
-      state.guessedWord[state.currentRow] = state.guessedWord[
-        state.currentRow
-      ].concat(action.payload);
     },
     setCurrentRow: (state) => {
       if (state.guessedWord[state.currentRow]?.length === state.numberOfWords) {
@@ -51,6 +53,14 @@ const guessWordSlice = createSlice({
         state.currentRow += 1;
       }
     },
+    removeCurrentWord: (state) => {
+      if (state.guessedWord[state.currentRow]?.length > 0) {
+        // Remove the last character from the guessed word at the current row
+        state.guessedWord[state.currentRow] = state.guessedWord[
+          state.currentRow
+        ].slice(0, -1);
+      }
+    },
     resetGame: (state) => {
       // Resets the game state
       state.currentRow = 0;
@@ -58,7 +68,7 @@ const guessWordSlice = createSlice({
       state.colorStates = [];
     },
     handleCheck: (state) => {
-      const currentGuess = state.guessedWord[state.currentRow - 1] || "";
+      const currentGuess = state.guessedWord[state.currentRow];
       if (currentGuess === state.answer) {
         console.log("correct");
         alert("Congratulations! You've guessed the word!");
@@ -69,9 +79,15 @@ const guessWordSlice = createSlice({
   },
 });
 
-export const { setGuessedWord, handleCheck, setCurrentRow, resetGame } =
-  guessWordSlice.actions;
+export const {
+  setGuessedWord,
+  handleCheck,
+  setCurrentRow,
+  resetGame,
+  removeCurrentWord,
+} = guessWordSlice.actions;
 export default guessWordSlice.reducer;
 
 // Selectors
-export const selectColorStates = (state: RootState, rowId: number): string[] => state.GuessWordSlice.colorStates[rowId];
+export const selectColorStates = (state: RootState, rowId: number): string[] =>
+  state.GuessWordSlice.colorStates[rowId];

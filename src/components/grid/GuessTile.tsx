@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { ElementTestIds } from "../../GuessUtil";
 import { createSelector } from "@reduxjs/toolkit";
+import { motion } from "framer-motion";
 export default function GuessTile({
   id,
   rowid,
@@ -33,21 +34,31 @@ export default function GuessTile({
       (guessedWord) => guessedWord[rowId]?.[id] || "" // Only re-run if guessedWord changes
     );
   const letter = useSelector(getGuessLetter(rowid, id));
+  const tileVariants = {
+    onType: {
+      outline: "2px solid black",
+      scale: [1, 1.2, 1],
+      transition: { ease: "easeInOut", duration: 0.1 },
+    },
+    idle: {},
+  };
 
   return (
-    <div
+    <motion.div
       className={classNames(
-        "flex items-center justify-center size-16 border border-black border-solid",
+        "flex items-center justify-center size-16 border border-black border-solid transition-colors",
         {
           "bg-white": !colors[id],
           "bg-green-300": colors[id] === "lightgreen",
-          "bg-orange-200": colors[id] === "gold",
-          "bg-slate-200": colors[id] === "grey",
+          "bg-yellow-500": colors[id] === "gold",
+          "bg-slate-600": colors[id] === "grey",
         }
       )}
       data-testid={ElementTestIds.tile}
+      variants={tileVariants}
+      animate={letter ? "onType" : "idle"}
     >
       <p className="font-bold capitalize text-5xl m-0">{letter}</p>
-    </div>
+    </motion.div>
   );
 }
