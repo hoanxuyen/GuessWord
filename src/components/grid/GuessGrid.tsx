@@ -16,7 +16,7 @@ export default function GuessGrid() {
   };
   return (
     <div
-      className="flex flex-col gap-4 items-center"
+      className="flex flex-col gap-2 items-center"
       data-testid={ElementTestIds.grid}
     >
       {generateGrid(numberOfRows)}

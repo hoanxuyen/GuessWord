@@ -36,7 +36,7 @@ export default function GuessTile({
   const letter = useSelector(getGuessLetter(rowid, id));
   const tileVariants = {
     onType: {
-      outline: "2px solid black",
+      boxShadow: "5px 5px 0 rgba(0, 0, 0, 0.1)",
       scale: [1, 1.2, 1],
       transition: { ease: "easeInOut", duration: 0.1 },
     },
@@ -46,19 +46,22 @@ export default function GuessTile({
   return (
     <motion.div
       className={classNames(
-        "flex items-center justify-center size-16 border border-black border-solid transition-colors",
+        "flex items-center justify-center w-12 h-12 text-center font-bold rounded-lg shadow-md transition-colors",
         {
-          "bg-white": !colors[id],
-          "bg-green-300": colors[id] === "lightgreen",
-          "bg-yellow-500": colors[id] === "gold",
-          "bg-slate-600": colors[id] === "grey",
+          "bg-white": !colors[id] && !letter, // White background when no letter is entered
+          "bg-white text-black": !colors[id] && letter, // Gray background when letter is entered but not checked
+          "text-black": colors[id] || letter, // Text is black when letter is entered or color state is set
+          "text-white": !colors[id] && !letter, // Text is white when the cell is empty
+          "bg-green-500": colors[id] === "lightgreen",
+          "bg-yellow-400": colors[id] === "gold",
+          "bg-gray-700": colors[id] === "grey",
         }
       )}
       data-testid={ElementTestIds.tile}
       variants={tileVariants}
       animate={letter ? "onType" : "idle"}
     >
-      <p className="font-bold capitalize text-5xl m-0">{letter}</p>
+      <p className="font-bold capitalize text-4xl m-0">{letter}</p>
     </motion.div>
   );
 }
