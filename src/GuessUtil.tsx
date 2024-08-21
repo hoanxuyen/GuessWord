@@ -4,3 +4,9 @@ export const ElementTestIds = {
   grid: "GuessGrid",
   keyboard: "GuessKeyboard",
 };
+export enum COLORSTATES {
+  DEFAULT = "",
+  CORRECT = "lightgreen",
+  CONTAIN = "gold",
+  INCORRECT = "grey",
+}
