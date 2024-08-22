@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import GuessTile from "../components/grid/GuessTile";
-import { COLORSTATES } from "../GuessUtil";
+import { COLOR_STATES } from "../GuessUtil";
 
 const meta: Meta<typeof GuessTile> = {
   title: "Grid/Tile",
@@ -14,19 +14,19 @@ const meta: Meta<typeof GuessTile> = {
       control: {
         type: "radio",
         labels: {
-          [COLORSTATES.DEFAULT]: "Default",
-          [COLORSTATES.CORRECT]: "Correct",
-          [COLORSTATES.CONTAIN]: "Contain",
-          [COLORSTATES.INCORRECT]: "Incorrect",
+          [COLOR_STATES.DEFAULT]: "Default",
+          [COLOR_STATES.CORRECT]: "Correct",
+          [COLOR_STATES.CONTAIN]: "Contain",
+          [COLOR_STATES.INCORRECT]: "Incorrect",
         },
       },
       description:
         "Changed background color based on position of the character in the result's word",
       options: [
-        COLORSTATES.DEFAULT,
-        COLORSTATES.CORRECT,
-        COLORSTATES.CONTAIN,
-        COLORSTATES.INCORRECT,
+        COLOR_STATES.DEFAULT,
+        COLOR_STATES.CORRECT,
+        COLOR_STATES.CONTAIN,
+        COLOR_STATES.INCORRECT,
       ],
       name: "Color States",
     },
@@ -45,6 +45,6 @@ type Story = StoryObj<typeof meta>;
 
 export const Tile: Story = {
   args: {
-    color: COLORSTATES.DEFAULT,
+    color: COLOR_STATES.DEFAULT,
   },
 };

@@ -1,11 +1,11 @@
 import classNames from "classnames";
-import { COLORSTATES, ElementTestIds } from "../../GuessUtil";
+import { COLOR_STATES, ElementTestIds } from "../../GuessUtil";
 import { motion } from "framer-motion";
 export default function GuessTile({
   color,
   letter,
 }: {
-  color: COLORSTATES;
+  color: COLOR_STATES;
   letter: string;
 }) {
   const tileVariants = {
@@ -25,9 +25,9 @@ export default function GuessTile({
           "bg-white text-black": !color && letter, // Gray background when letter is entered but not checked
           "text-black": color || letter, // Text is black when letter is entered or color state is set
           "text-white": !color && !letter, // Text is white when the cell is empty
-          "bg-green-500": color === COLORSTATES.CORRECT,
-          "bg-yellow-400": color === COLORSTATES.CONTAIN,
-          "bg-gray-700": color === COLORSTATES.INCORRECT,
+          "bg-green-500": color === COLOR_STATES.CORRECT,
+          "bg-yellow-400": color === COLOR_STATES.CONTAIN,
+          "bg-gray-700": color === COLOR_STATES.INCORRECT,
         }
       )}
       data-testid={ElementTestIds.tile}

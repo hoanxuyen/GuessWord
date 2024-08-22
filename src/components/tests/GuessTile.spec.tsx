@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
 import GuessTile from "../grid/GuessTile";
-import { COLORSTATES, ElementTestIds } from "../../GuessUtil";
+import { COLOR_STATES, ElementTestIds } from "../../GuessUtil";
 
 describe("test component", () => {
   beforeEach(() => {
-    render(<GuessTile color={COLORSTATES.CORRECT} letter="A" />);
+    render(<GuessTile color={COLOR_STATES.CORRECT} letter="A" />);
   });
   it("Should render correctly", () => {
     expect(screen.getByTestId(ElementTestIds.tile)).toBeInTheDocument();

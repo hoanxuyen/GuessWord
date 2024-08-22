@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { COLORSTATES } from "../GuessUtil";
+import { COLOR_STATES } from "../GuessUtil";
 
 type GuessedWordSliceType = {
   numberOfRows: number;
@@ -44,9 +44,9 @@ const guessWordSlice = createSlice({
         state.colorStates[state.currentRow] = [];
         const currentGuess = state.guessedWord[state.currentRow] || "";
         const colors = currentGuess.split("").map((letter, index) => {
-          if (state.answer[index] === letter) return COLORSTATES.CORRECT; // Correct position
-          if (state.answer.includes(letter)) return COLORSTATES.CONTAIN; // Wrong position
-          return COLORSTATES.INCORRECT; // Incorrect letter
+          if (state.answer[index] === letter) return COLOR_STATES.CORRECT; // Correct position
+          if (state.answer.includes(letter)) return COLOR_STATES.CONTAIN; // Wrong position
+          return COLOR_STATES.INCORRECT; // Incorrect letter
         });
         state.colorStates[state.currentRow] = colors;
         state.currentRow += 1;
