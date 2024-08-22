@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fiveLetter, fourLetter, sixLetter } from "../GuessDictionary";
-import { RootState } from "../store/store";
+import { COLOR_STATES } from "../GuessUtil";
 
-type guessedWordSliceType = {
+type GuessedWordSliceType = {
   numberOfRows: number;
   numberOfWords: number;
   currentRow: number;
@@ -13,7 +12,7 @@ type guessedWordSliceType = {
   colorStates: string[][];
 };
 
-const initialState: guessedWordSliceType = {
+const initialState: GuessedWordSliceType = {
   numberOfRows: 5,
   numberOfWords: 5,
   currentRow: 0,
@@ -45,9 +44,9 @@ const guessWordSlice = createSlice({
         state.colorStates[state.currentRow] = [];
         const currentGuess = state.guessedWord[state.currentRow] || "";
         const colors = currentGuess.split("").map((letter, index) => {
-          if (state.answer[index] === letter) return "lightgreen"; // Correct position
-          if (state.answer.includes(letter)) return "gold"; // Wrong position
-          return "grey"; // Incorrect letter
+          if (state.answer[index] === letter) return COLOR_STATES.CORRECT; // Correct position
+          if (state.answer.includes(letter)) return COLOR_STATES.CONTAIN; // Wrong position
+          return COLOR_STATES.INCORRECT; // Incorrect letter
         });
         state.colorStates[state.currentRow] = colors;
         state.currentRow += 1;
@@ -87,7 +86,3 @@ export const {
   removeCurrentWord,
 } = guessWordSlice.actions;
 export default guessWordSlice.reducer;
-
-// Selectors
-export const selectColorStates = (state: RootState, rowId: number): string[] =>
-  state.GuessWordSlice.colorStates[rowId];

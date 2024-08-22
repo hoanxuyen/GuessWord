@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { ElementTestIds } from "../../GuessUtil";
-import GuessTile from "./GuessTile";
 import { RootState } from "../../store/store";
+import GuessTileContainer from "./GuessTileContainer";
 
 export default function GuessRow({ rowid }: { rowid: number }) {
   const numberOfWords = useSelector(
@@ -11,7 +11,7 @@ export default function GuessRow({ rowid }: { rowid: number }) {
   const generateRow = (numberOfWords: number) => {
     const tiles = [];
     for (let i = 0; i < numberOfWords; i++) {
-      tiles.push(<GuessTile id={i} rowid={rowid} key={i} />);
+      tiles.push(<GuessTileContainer id={i} rowid={rowid} key={i} />);
     }
     return tiles;
   };
