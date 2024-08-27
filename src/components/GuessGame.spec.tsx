@@ -1,13 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import GuessWordSlice from "../features/GuessWordSlice";
 import { render, screen, waitFor } from "@testing-library/react";
 import { Provider } from "react-redux";
 import GuessGame from "./GuessGame";
-import { BrowserRouter, useNavigate } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { ElementTestIds } from "../GuessUtil";
 import userEvent from "@testing-library/user-event";
-import { restoreAllMocks } from "@storybook/test";
 const mockedUseNavigate = vi.fn();
 vi.mock("react-router-dom", async () => {
   const mod =

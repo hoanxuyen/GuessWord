@@ -20,6 +20,9 @@ describe("GuessKeyboard component", () => {
         guessedWord: [],
         colorStates: [[]],
         wordLength: 4,
+        isCompleted: false,
+        isLost: false,
+        isModalOpen: false,
       },
     },
   });
