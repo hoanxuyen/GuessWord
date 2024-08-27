@@ -3,7 +3,6 @@ import { useCallback, useEffect, useState } from "react";
 import {
   handleCheck,
   removeCurrentWord,
-  setCurrentRow,
   setGuessedWord,
 } from "../../features/GuessWordSlice";
 import GuessKeyBoard from "./GuessKeyBoard";
@@ -21,7 +20,6 @@ export default function GuessKeyboardContainer() {
       setActiveKey(key); // update activeKey when pressed
       if (key === "ENTER") {
         dispatch(handleCheck());
-        dispatch(setCurrentRow());
       } else if (key === "BACKSPACE" || key === "DELETE") {
         dispatch(removeCurrentWord());
       } else if (/^[A-Z]$/.test(key)) {

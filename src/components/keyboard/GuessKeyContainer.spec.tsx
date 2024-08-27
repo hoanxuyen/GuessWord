@@ -1,16 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
-import GuessKey from "../keyboard/GuessKey";
 import { configureStore } from "@reduxjs/toolkit";
 import GuessWordSlice, {
   handleCheck,
   removeCurrentWord,
-  setCurrentRow,
   setGuessedWord,
 } from "../../features/GuessWordSlice";
 import { Provider } from "react-redux";
-import { userEvent } from "@storybook/test";
-import GuessKeyContainer from "../keyboard/GuessKeyContainer";
+import GuessKeyContainer from "./GuessKeyContainer";
+import userEvent from "@testing-library/user-event";
 
 describe("GuessKey component", () => {
   const mockStore = configureStore({
@@ -25,18 +23,16 @@ describe("GuessKey component", () => {
         answer: "TESTI",
         guessedWord: [],
         colorStates: [[]],
+        wordLength: 4,
+        isCompleted: false,
+        isLost: false,
+        isModalOpen: false,
       },
     },
   });
   const user = userEvent.setup();
   const spyOnDispatch = vi.spyOn(mockStore, "dispatch");
-  it("Should render component", () => {
-    render(
-      <Provider store={mockStore}>
-        <GuessKeyContainer letter="A" isActive={false} />
-      </Provider>
-    );
-  });
+
   it("should pass correct props to GuessKey", () => {
     render(
       <Provider store={mockStore}>
@@ -44,18 +40,20 @@ describe("GuessKey component", () => {
       </Provider>
     );
 
-    const button = screen.getByText("A");
+    const button = screen.getByRole("button", { name: "A" });
+
     expect(button).toBeInTheDocument();
   });
-  it('Should dispatch handleCheck and setCurrentRow when "ENTER" is clicked', async () => {
+
+  it('Should dispatch handleCheck when "ENTER" is clicked', async () => {
     render(
       <Provider store={mockStore}>
         <GuessKeyContainer letter="ENTER" isActive={false} />
       </Provider>
     );
-    await user.click(screen.getByText("ENTER"));
+    await user.click(screen.getByRole("button", { name: "ENTER" }));
+
     expect(spyOnDispatch).toHaveBeenCalledWith(handleCheck());
-    expect(spyOnDispatch).toHaveBeenCalledWith(setCurrentRow());
   });
   it('Should dispatch removeCurrentWord when "DELETE" is clicked', async () => {
     render(
@@ -63,7 +61,8 @@ describe("GuessKey component", () => {
         <GuessKeyContainer letter="DELETE" isActive={false} />
       </Provider>
     );
-    await user.click(screen.getByText("DELETE"));
+    await user.click(screen.getByRole("button", { name: "DELETE" }));
+
     expect(spyOnDispatch).toHaveBeenCalledWith(removeCurrentWord());
   });
   it("Should dispatch setGuessedWord when a letter is clicked", async () => {
@@ -72,7 +71,8 @@ describe("GuessKey component", () => {
         <GuessKeyContainer letter="A" isActive={false} />
       </Provider>
     );
-    await user.click(screen.getByText("A"));
+    await user.click(screen.getByRole("button", { name: "A" }));
+
     expect(spyOnDispatch).toHaveBeenCalledWith(setGuessedWord("A"));
   });
 });

@@ -12,9 +12,9 @@ export default function GuessKey({
   return (
     <motion.button
       className={classNames(
-        "bg-neutral-300 size-14 max-w-full flex justify-center items-center rounded m-0 border-none cursor-pointer",
+        "bg-neutral-300 size-7 sm:size-14 max-w-full flex justify-center items-center rounded m-0 border-none cursor-pointer",
         {
-          "w-fit p-4": letter.length > 1,
+          "!w-fit sm:p-4": letter.length > 1,
         }
       )}
       onClick={() => onClick()}

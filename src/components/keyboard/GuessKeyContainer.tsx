@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 import {
   handleCheck,
   removeCurrentWord,
-  setCurrentRow,
   setGuessedWord,
 } from "../../features/GuessWordSlice";
 import GuessKey from "./GuessKey";
@@ -19,7 +18,6 @@ export default function GuessKeyContainer({
     switch (letter) {
       case "ENTER":
         dispatch(handleCheck());
-        dispatch(setCurrentRow());
         break;
       case "DELETE":
         dispatch(removeCurrentWord());

@@ -2,6 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 import { RootState } from "../../store/store";
 import { useSelector } from "react-redux";
 import GuessTile from "./GuessTile";
+import { COLOR_STATES } from "../../GuessUtil";
 export default function GuessTileContainer({
   id,
   rowid,
@@ -22,5 +23,5 @@ export default function GuessTileContainer({
     );
   const letter = useSelector(getGuessLetter(rowid, id));
 
-  return <GuessTile letter={letter} color={colors[id]} />;
+  return <GuessTile letter={letter} color={colors[id] as COLOR_STATES} />;
 }

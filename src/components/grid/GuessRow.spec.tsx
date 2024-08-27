@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import GuessRow from "../grid/GuessRow";
+import GuessRow from "./GuessRow";
 import { render, screen } from "@testing-library/react";
 import { ElementTestIds } from "../../GuessUtil";
 import { configureStore } from "@reduxjs/toolkit";
@@ -19,6 +19,10 @@ describe("GuessRow Component", () => {
         answer: "",
         guessedWord: [],
         colorStates: [[]],
+        isCompleted: false,
+        isLost: false,
+        isModalOpen: false,
+        wordLength: 4,
       },
     },
   });

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
-import GuessTile from "../grid/GuessTile";
+import GuessTile from "./GuessTile";
 import { COLOR_STATES, ElementTestIds } from "../../GuessUtil";
 
 describe("test component", () => {

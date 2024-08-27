@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import GuessKeyBoard from "../keyboard/GuessKeyBoard";
+import GuessKeyBoard from "./GuessKeyBoard";
 import { ElementTestIds } from "../../GuessUtil";
 import { configureStore } from "@reduxjs/toolkit";
 import GuessWordSlice from "../../features/GuessWordSlice";
@@ -19,13 +19,14 @@ describe("GuessKeyboard component", () => {
         answer: "TESTI",
         guessedWord: [],
         colorStates: [[]],
+        wordLength: 4,
       },
     },
   });
   beforeEach(() => {
     render(
       <Provider store={mockStore}>
-        <GuessKeyBoard />
+        <GuessKeyBoard set1={["A"]} set2={["B"]} set3={["C"]} activeKey={"A"} />
       </Provider>
     );
   });

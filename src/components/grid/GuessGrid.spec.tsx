@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { beforeEach, describe, expect, it } from "vitest";
-import GuessGrid from "../grid/GuessGrid";
+import GuessGrid from "./GuessGrid";
 import { ElementTestIds } from "../../GuessUtil";
 import { configureStore } from "@reduxjs/toolkit";
 import GuessWordSlice from "../../features/GuessWordSlice";
@@ -19,6 +19,10 @@ describe("GuessGrid component", () => {
         answer: "TESTI",
         guessedWord: ["T"],
         colorStates: [["lightgreen"]],
+        wordLength: 4,
+        isCompleted: false,
+        isLost: false,
+        isModalOpen: false,
       },
     },
   });
